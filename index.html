@@ -1,0 +1,825 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="VATSIT — Premium futuristic IT solutions." />
+  <title>VATSIT — Digital Solutions That Drive Real Growth</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <!-- Swiper CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet" />
+  <!-- AOS Animation CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+  <!-- ========================================== -->
+  <!-- CSS STYLES (Premium Dark & Green Theme)    -->
+  <!-- ========================================== -->
+  <style>
+    :root {
+      /* Dark & Green Color Palette */
+      --bg-dark: #020b06;         /* Deep Dark Green/Black */
+      --bg-light: #f0fdf4;        /* Soft Mint/White for light sections */
+      --primary: #10b981;         /* Neon Emerald Green */
+      --primary-glow: rgba(16, 185, 129, 0.5);
+      --text-dark: #ffffff;
+      --text-muted: #94a3b8;
+      --text-light: #064e3b;      /* Dark green text for light sections */
+      --font: 'Poppins', sans-serif;
+      --radius: 16px;
+      --star-color: #facc15;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+    body { font-family: var(--font); background-color: var(--bg-dark); color: var(--text-dark); overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; transition: 0.3s; }
+    ul { list-style: none; padding: 0; }
+    
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    .mt-4 { margin-top: 30px; } 
+    .text-left { text-align: left; } .text-center { text-align: center; } 
+
+    /* Theme Sections */
+    .dark-section { background-color: var(--bg-dark); color: var(--text-dark); padding: 90px 0; }
+    .light-section { background-color: var(--bg-light); color: var(--text-light); padding: 90px 0; }
+
+    /* Typography */
+    .highlight { color: var(--primary); text-shadow: 0 0 10px var(--primary-glow); }
+    .highlight-green { color: var(--primary); }
+    .eyebrow { color: var(--primary); font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; display: block; }
+    .section-title h2 { font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 700; margin-bottom: 15px; line-height: 1.2; }
+    .dark-section .section-title p { color: var(--text-muted); font-size: 16px; max-width: 700px; margin: 0 auto 40px; line-height: 1.6;}
+    .light-section .section-title p { color: #334155; font-size: 16px; max-width: 700px; line-height: 1.6; margin-bottom: 40px;}
+
+    /* Navbar */
+    .navbar { position: fixed; top: 0; width: 100%; z-index: 1000; padding: 15px 0; transition: 0.4s; }
+    .navbar.scrolled { background: rgba(2, 11, 6, 0.95); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(16, 185, 129, 0.2); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+    .logo { display: flex; align-items: center; gap: 12px; }
+    .logo img { height: 45px; border-radius: 8px; }
+    .logo-text strong { font-size: 1.2rem; display: block; line-height: 1.2; }
+    .logo-text span { font-size: 0.7rem; color: var(--text-muted); }
+    
+    .nav-links { display: flex; gap: 20px; align-items: center; }
+    .nav-links a { font-size: 14px; font-weight: 500; position: relative; }
+    .nav-links a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; background: var(--primary); transition: 0.3s; }
+    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+    .btn-nav { background: var(--primary); padding: 8px 22px; border-radius: 30px; font-weight: 600; color: #000 !important; }
+    .btn-nav::after { display: none; }
+    .menu-toggle { display: none; font-size: 24px; cursor: pointer; color: #fff; }
+
+    /* Buttons */
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 28px; border-radius: 30px; font-weight: 700; font-size: 15px; cursor: pointer; transition: 0.3s; border: none; }
+    .btn-primary { background: var(--primary); color: #000; }
+    .glow-effect:hover { box-shadow: 0 0 20px var(--primary-glow); transform: translateY(-3px); }
+    .btn-outline { border: 1px solid var(--primary); color: var(--primary); background: transparent; }
+    .btn-outline:hover { background: rgba(16, 185, 129, 0.1); }
+
+    /* Hero Section */
+    .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 100px; position: relative; overflow: hidden;}
+    .hero::before { content: ''; position: absolute; top: 10%; right: -5%; width: 500px; height: 500px; background: var(--primary); filter: blur(200px); opacity: 0.15; z-index: 0; animation: pulse 4s infinite alternate;}
+    @keyframes pulse { 0% { opacity: 0.1; transform: scale(1); } 100% { opacity: 0.25; transform: scale(1.1); } }
+    
+    .hero-container { display: flex; align-items: center; justify-content: space-between; gap: 50px; flex-wrap: wrap; width: 100%; position: relative; z-index: 1;}
+    .hero-content { flex: 1 1 500px; }
+    .hero-image { flex: 1 1 400px; display: flex; justify-content: center; perspective: 1000px; }
+    
+    /* INTERACTIVE 3D NEON ANIMATION (NEW) */
+    .interactive-element { position: relative; width: 350px; height: 350px; transform-style: preserve-3d; transition: transform 0.1s ease-out; }
+    .circle-ring { position: absolute; border: 2px solid var(--primary); border-radius: 50%; box-shadow: 0 0 20px var(--primary-glow), inset 0 0 20px var(--primary-glow); }
+    .ring-1 { width: 100%; height: 100%; top: 0; left: 0; animation: spinX 8s linear infinite; border-top: 2px solid transparent; }
+    .ring-2 { width: 80%; height: 80%; top: 10%; left: 10%; animation: spinY 12s linear infinite reverse; border-right: 2px solid transparent; }
+    .ring-3 { width: 60%; height: 60%; top: 20%; left: 20%; animation: spinZ 6s linear infinite; border-bottom: 2px solid transparent; }
+    .core-icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 60px; color: var(--primary); text-shadow: 0 0 30px var(--primary); animation: corePulse 2s infinite alternate; }
+    
+    @keyframes spinX { 100% { transform: rotateX(360deg) rotateY(180deg); } }
+    @keyframes spinY { 100% { transform: rotateY(360deg) rotateZ(180deg); } }
+    @keyframes spinZ { 100% { transform: rotateZ(360deg) rotateX(180deg); } }
+    @keyframes corePulse { 0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.8; } 100% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; } }
+
+    .kicker { display: inline-flex; align-items: center; gap: 8px; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.2); color: var(--primary); padding: 6px 16px; border-radius: 30px; font-size: 13px; font-weight: 600; margin-bottom: 25px; }
+    .kicker .dot { width: 8px; height: 8px; background: var(--primary); border-radius: 50%; box-shadow: 0 0 10px var(--primary); }
+    .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.2; margin-bottom: 20px; font-weight: 800; }
+    .hero p { color: var(--text-muted); font-size: clamp(14px, 1.5vw, 16px); margin-bottom: 35px; line-height: 1.6; }
+    .hero-btns { display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 30px; }
+    
+    .trusted-by { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
+    .trusted-by span { display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 15px; }
+    .trust-badges { display: flex; gap: 10px; flex-wrap: wrap; }
+    .badge { background: rgba(255,255,255,0.05); padding: 8px 15px; border-radius: 20px; font-size: 12px; border: 1px solid rgba(16, 185, 129, 0.2); color: var(--primary); }
+
+    /* Grids */
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+
+    /* Cards */
+    .card-light { background: #ffffff; padding: 40px; border-radius: var(--radius); border: 1px solid rgba(16, 185, 129, 0.1); }
+    .premium-hover { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+    .premium-hover:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(16, 185, 129, 0.1); border-color: var(--primary); }
+    .card-icon { width: 60px; height: 60px; background: rgba(16, 185, 129, 0.1); color: var(--primary); display: flex; justify-content: center; align-items: center; border-radius: 14px; font-size: 24px; margin-bottom: 25px; }
+    .card-light h3 { font-size: 20px; color: #020b06; margin-bottom: 12px; font-weight: 700; }
+    .card-light p { color: #334155; font-size: 14px; margin-bottom: 20px; line-height: 1.6; }
+    .card-link { color: var(--primary); font-weight: 700; font-size: 14px; display: flex; align-items: center; gap: 8px; }
+
+    .glass-card { background: rgba(16, 185, 129, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(16, 185, 129, 0.1); padding: 35px; border-radius: var(--radius); }
+    .glass-card:hover { border-color: var(--primary); background: rgba(16, 185, 129, 0.08); }
+    .row-card { display: flex; gap: 20px; align-items: flex-start; }
+    .row-card .card-icon { margin-bottom: 0; flex-shrink: 0; }
+
+    /* Stats */
+    .stat-box { background: rgba(16, 185, 129, 0.05); padding: 35px; border-radius: var(--radius); border: 1px solid rgba(16, 185, 129, 0.1); }
+    .stat-box h3 { font-size: 2.5rem; color: var(--primary); margin-bottom: 5px; font-weight: 800; text-shadow: 0 0 10px var(--primary-glow); }
+    .stat-box p { font-size: 14px; font-weight: 600; color: var(--text-dark); }
+
+    /* About Section */
+    .about-grid { display: flex; flex-wrap: wrap; gap: 40px; align-items: center; }
+    .about-left, .about-right { flex: 1 1 400px; }
+    .profile-card { display: flex; align-items: center; gap: 20px; background: rgba(255,255,255,0.03); padding: 25px; border-radius: var(--radius); border: 1px solid rgba(16, 185, 129, 0.2); margin-bottom: 20px; transition: 0.3s; }
+    .profile-card:hover { border-color: var(--primary); transform: translateX(10px); background: rgba(16, 185, 129, 0.05); }
+    .profile-img { width: 80px; height: 80px; border-radius: 50%; border: 2px solid var(--primary); object-fit: cover; box-shadow: 0 0 15px var(--primary-glow); }
+    .profile-info h4 { font-size: 18px; color: #fff; margin-bottom: 3px; font-weight: 700; }
+    .profile-info span { font-size: 13px; color: var(--primary); font-weight: 600; }
+    .profile-info p { font-size: 13px; margin-top: 8px; color: #cbd5e1; line-height: 1.5; }
+    
+    .experience-card { background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(2, 11, 6, 1)); padding: 50px 40px; border-radius: var(--radius); border: 1px solid var(--primary); text-align: center; box-shadow: 0 0 30px var(--primary-glow); }
+    .experience-card h3 { font-size: 3.5rem; color: var(--primary); line-height: 1; margin-bottom: 10px; font-weight: 800; text-shadow: 0 0 10px var(--primary-glow); }
+    .experience-card h3 span { font-size: 1.2rem; color: #fff; }
+    .experience-card p { color: #cbd5e1; font-weight: 500; font-size: 16px; }
+
+    /* Portfolio */
+    .portfolio-card { background: rgba(255,255,255,0.03); border-radius: var(--radius); overflow: hidden; border: 1px solid rgba(16, 185, 129, 0.1); }
+    .portfolio-card img { width: 100%; height: 220px; object-fit: cover; }
+    .portfolio-content { padding: 30px; }
+    .badge-green { background: rgba(16, 185, 129, 0.15); color: var(--primary); padding: 5px 12px; border-radius: 15px; font-size: 11px; font-weight: 700; display: inline-block; margin-bottom: 15px; border: 1px solid var(--primary); }
+    .portfolio-content h3 { font-size: 20px; margin-bottom: 10px; color: #fff; font-weight: 700;}
+    .portfolio-content p { font-size: 14px; color: var(--text-muted); margin-bottom: 0; line-height: 1.6; }
+
+    /* Technologies */
+    .tech-tags { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-top: 20px; }
+    .glass-tag { background: #ffffff; border: 1px solid #cbd5e1; padding: 12px 25px; border-radius: 30px; display: inline-flex; align-items: center; gap: 10px; font-weight: 700; font-size: 14px; color: #020b06; transition: 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.03); }
+    .glass-tag:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(16, 185, 129, 0.2); }
+    .glass-tag i { color: var(--primary); font-size: 20px; }
+
+    /* Contact Form General */
+    .contact-container { display: flex; gap: 60px; align-items: center; flex-wrap: wrap; }
+    .contact-info { flex: 1 1 400px; }
+    .contact-list { margin-top: 30px; }
+    .contact-list li { display: flex; align-items: center; gap: 15px; font-size: 15px; margin-bottom: 20px; color: var(--text-muted); }
+    .contact-list i { background: rgba(16, 185, 129, 0.1); color: var(--primary); width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 18px; border: 1px solid var(--primary); }
+
+    .glass-form { background: rgba(16, 185, 129, 0.05); backdrop-filter: blur(20px); border: 1px solid rgba(16, 185, 129, 0.2); padding: 40px; border-radius: 24px; width: 100%; flex: 1 1 400px; }
+    .input-group { margin-bottom: 20px; width: 100%; }
+    .input-group input, .input-group textarea, .input-group select { width: 100%; padding: 16px; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: #fff; font-family: var(--font); outline: none; transition: 0.3s; font-size: 14px; }
+    .input-group input:focus, .input-group textarea:focus, .input-group select:focus { border-color: var(--primary); box-shadow: 0 0 10px var(--primary-glow); }
+    .input-group select option { background: var(--bg-dark); color: #fff; }
+    .btn-submit { width: 100%; padding: 18px; font-size: 16px; margin-top: 10px; }
+
+    /* Dynamic Reviews Section */
+    .testimonial-slide { background: #ffffff; border: 1px solid rgba(16, 185, 129, 0.2); padding: 40px; border-radius: var(--radius); text-align: center; height: 100%; box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
+    .testimonial-slide p { font-size: 15px; font-style: italic; color: #334155; margin-bottom: 20px; line-height: 1.6; }
+    .testimonial-slide h4 { font-size: 16px; color: #020b06; font-weight: 700; }
+    .star-display { color: var(--star-color); font-size: 14px; margin-bottom: 15px; }
+    
+    .review-wrapper { margin-top: 60px; display: flex; justify-content: center; }
+    .rating-input { display: flex; justify-content: center; gap: 10px; margin-bottom: 25px; font-size: 28px; color: #cbd5e1; cursor: pointer; }
+    .rating-input i.active { color: var(--star-color); text-shadow: 0 0 10px rgba(250, 204, 21, 0.4); }
+
+    /* Footer */
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 30px; padding-bottom: 40px; }
+    .footer-logo { height: 45px; margin-bottom: 15px; border-radius: 8px; }
+    .footer-brand p { color: var(--text-muted); font-size: 14px; max-width: 300px; line-height: 1.6; }
+    .footer-col h4 { font-size: 18px; margin-bottom: 20px; color: #fff; font-weight: 700; }
+    .footer-links li, .footer-contact-line { margin-bottom: 12px; font-size: 14px; color: var(--text-muted); display: flex; align-items: center; gap: 10px; }
+    .footer-links a:hover { color: var(--primary); }
+    .footer-contact-line i { color: var(--primary); font-size: 16px; }
+    .newsletter-box { display: flex; gap: 10px; margin-top: 15px; width: 100%; }
+    .newsletter-box input { flex: 1; padding: 12px 15px; border-radius: 8px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; outline:none; font-size: 14px; width: 100%; }
+    .newsletter-box button { padding: 12px 20px; border-radius: 8px; background: var(--primary); color: #000; border: none; cursor: pointer; font-weight: 700; transition: 0.3s; }
+    .newsletter-box button:hover { background: #059669; color: #fff; }
+    .social-links { margin-top: 25px; display: flex; gap: 12px; }
+    .social-links a { width: 40px; height: 40px; background: rgba(16, 185, 129, 0.1); border: 1px solid var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: 0.3s; color: var(--primary); font-size: 16px; }
+    .social-links a:hover { background: var(--primary); color: #000; transform: translateY(-3px); box-shadow: 0 0 15px var(--primary-glow); }
+    .footer-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; padding-top: 20px; font-size: 13px; color: var(--text-muted); border-top: 1px solid rgba(255,255,255,0.1); }
+
+    /* Responsive */
+    @media (max-width: 850px) {
+      .menu-toggle { display: block; }
+      .nav-links { position: fixed; top: 70px; right: -100%; background: rgba(2, 11, 6, 0.98); backdrop-filter: blur(20px); width: 250px; height: calc(100vh - 70px); flex-direction: column; align-items: flex-start; padding: 40px 30px; transition: 0.4s; border-left: 1px solid var(--primary); box-shadow: -10px 0 30px rgba(0,0,0,0.5); }
+      .nav-links.active { right: 0; }
+      .nav-links a { font-size: 16px; margin-bottom: 20px; width: 100%; }
+      .btn-nav { text-align: center; margin-top: 10px; }
+      .hero-image { display: none; }
+      .hero-content { text-align: center; }
+      .hero-btns, .trust-badges { justify-content: center; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 576px) {
+      .section-title h2 { font-size: 2rem; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .hero-btns { flex-direction: column; width: 100%; }
+      .hero-btns .btn { width: 100%; }
+      .newsletter-box { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="#home" class="logo">
+        <img src="l.png" alt="VATSIT Logo" onerror="this.src='https://via.placeholder.com/45/10b981/000?text=V'" />
+        <div class="logo-text">
+          <strong>VATSIT</strong>
+          <span>Digital Solutions That Drive Growth</span>
+        </div>
+      </a>
+      <div class="menu-toggle" id="mobile-menu"><i class="fa-solid fa-bars"></i></div>
+      <nav class="nav-links" id="nav-links">
+        <a href="#home" class="active">Home</a>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#technologies">Tech</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact" class="btn-nav">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- 1. HERO SECTION -->
+    <section class="hero dark-section" id="home">
+      <div class="container hero-container">
+        <div class="hero-content" data-aos="fade-right">
+          <div class="kicker"><span class="dot"></span> WE BUILD</div>
+          <h1>DIGITAL SOLUTIONS <br><span class="highlight-green typed-text"></span></h1>
+          <p>VATSIT creates premium, high-performance digital products—web, mobile, cloud, and design systems—crafted to move metrics, not just pixels.</p>
+          <div class="hero-btns">
+            <a href="#services" class="btn btn-primary glow-effect">Explore Services</a>
+            <a href="#portfolio" class="btn btn-outline"><i class="fa-solid fa-play"></i> Watch Intro</a>
+          </div>
+          
+          <div class="trusted-by">
+            <span>Trusted by fast-growing teams</span>
+            <div class="trust-badges">
+              <span class="badge">DocuFirst</span>
+              <span class="badge">Maxico</span>
+              <span class="badge">Travelyaari</span>
+              <span class="badge">AgroMart</span>
+              <span class="badge">FitLife</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- INTERACTIVE 3D NEON ANIMATION (Replaced static image) -->
+        <div class="hero-image" data-aos="fade-left">
+          <div class="interactive-element" id="interactive3D">
+            <div class="circle-ring ring-1"></div>
+            <div class="circle-ring ring-2"></div>
+            <div class="circle-ring ring-3"></div>
+            <div class="core-icon"><i class="fa-solid fa-laptop-code"></i></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. SERVICES SECTION -->
+    <section class="services light-section" id="services">
+      <div class="container">
+        <div class="section-title text-left" data-aos="fade-up">
+          <span class="eyebrow">OUR SERVICES</span>
+          <h2><span class="highlight-green">Premium</span> Services for Modern Businesses</h2>
+          <p>A complete suite of development, design, cloud, and marketing—built for measurable outcomes.</p>
+        </div>
+        <div class="grid-3">
+          <div class="card-light premium-hover" data-aos="fade-up">
+            <div class="card-icon"><i class="fa-solid fa-laptop-code"></i></div>
+            <h3>Web Development</h3>
+            <p>High-performance websites and platforms with clean architecture and stunning UX.</p>
+            <a href="#contact" class="card-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+          <div class="card-light premium-hover" data-aos="fade-up" data-aos-delay="100">
+            <div class="card-icon"><i class="fa-solid fa-mobile-screen"></i></div>
+            <h3>Mobile App Development</h3>
+            <p>Responsive, secure mobile experiences built for engagement and retention.</p>
+            <a href="#contact" class="card-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+          <div class="card-light premium-hover" data-aos="fade-up" data-aos-delay="200">
+            <div class="card-icon"><i class="fa-solid fa-diagram-project"></i></div>
+            <h3>Software Development</h3>
+            <p>Custom software solutions with scalable systems and robust integrations.</p>
+            <a href="#contact" class="card-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+          <div class="card-light premium-hover" data-aos="fade-up" data-aos-delay="300">
+            <div class="card-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+            <h3>Cloud Solutions</h3>
+            <p>Cloud migrations, DevOps, and infrastructure built for reliability and scale.</p>
+            <a href="#contact" class="card-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+          <div class="card-light premium-hover" data-aos="fade-up" data-aos-delay="400">
+            <div class="card-icon"><i class="fa-solid fa-bullhorn"></i></div>
+            <h3>Digital Marketing</h3>
+            <p>SEO, analytics, and performance marketing designed to grow pipeline and revenue.</p>
+            <a href="#contact" class="card-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+          <div class="card-light premium-hover" data-aos="fade-up" data-aos-delay="500">
+            <div class="card-icon"><i class="fa-solid fa-pen-nib"></i></div>
+            <h3>UI/UX Design</h3>
+            <p>Premium interface design with human-first workflows and conversion-focused systems.</p>
+            <a href="#contact" class="card-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. STATS & ABOUT SECTION (Updated with correct images r.png and s.png) -->
+    <section class="about dark-section" id="about">
+      <div class="container">
+        <!-- Stats -->
+        <div class="grid-4 text-center" style="margin-bottom: 80px;" data-aos="fade-up">
+          <div class="stat-box"><h3>20+</h3><p>Happy Clients</p></div>
+          <div class="stat-box"><h3>60+</h3><p>Projects Completed</p></div>
+          <div class="stat-box"><h3>3+</h3><p>Years Experience</p></div>
+          <div class="stat-box"><h3>100%</h3><p>Client Satisfaction</p></div>
+        </div>
+
+        <div class="section-title text-center" data-aos="fade-up">
+          <span class="eyebrow">ABOUT VATSIT</span>
+          <h2>We Turn Ideas Into <span class="highlight">Impactful</span> Digital Experiences</h2>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-left" data-aos="fade-right">
+            <!-- Vishal Vats (Founder) -->
+            <div class="profile-card">
+              <img src="r.png" alt="Vishal Vats" class="profile-img" />
+              <div class="profile-info">
+                <h4>Vishal Vats</h4>
+                <span>Founder</span>
+                <p>Vision-first product strategy and architecture guidance for scalable systems.</p>
+              </div>
+            </div>
+            <!-- RK_ gupta (CEO) -->
+            <div class="profile-card">
+              <img src="s.png" alt="CEO" class="profile-img" />
+              <div class="profile-info">
+                <h4>RK_ gupta</h4>
+                <span>CEO</span>
+                <p>Customer-centric execution that turns roadmap ideas into shipped results.</p>
+              </div>
+            </div>
+          </div>
+          <div class="about-right" data-aos="fade-left">
+            <div class="experience-card">
+              <h3>3+ <span>Years</span></h3>
+              <p>Experience in futuristic product delivery</p>
+              <div class="btn btn-primary mt-4 glow-effect" style="border-radius: 30px;"><i class="fa-solid fa-play"></i> Build • Ship • Scale</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. SOLUTIONS SECTION -->
+    <section class="solutions light-section" id="solutions">
+      <div class="container">
+        <div class="section-title text-left" data-aos="fade-up">
+          <span class="eyebrow">SOLUTIONS</span>
+          <h2><span class="highlight-green">Systems</span> Built for Performance & Growth</h2>
+          <p>From cloud infrastructure to UX design systems, we deliver end-to-end outcomes.</p>
+        </div>
+        <div class="grid-2">
+          <div class="card-light premium-hover row-card" data-aos="fade-up">
+            <div class="card-icon"><i class="fa-solid fa-server"></i></div>
+            <div>
+              <h3>Cloud Architecture</h3>
+              <p>Scalable, secure cloud deployments with DevOps-friendly pipelines.</p>
+            </div>
+          </div>
+          <div class="card-light premium-hover row-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="card-icon"><i class="fa-solid fa-robot"></i></div>
+            <div>
+              <h3>Automation & Integrations</h3>
+              <p>Smart workflows and API-first systems to reduce manual effort.</p>
+            </div>
+          </div>
+          <div class="card-light premium-hover row-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="card-icon"><i class="fa-solid fa-layer-group"></i></div>
+            <div>
+              <h3>Design Systems</h3>
+              <p>Premium UI kits, accessibility patterns, and consistent component logic.</p>
+            </div>
+          </div>
+          <div class="card-light premium-hover row-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="card-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+            <div>
+              <h3>Growth Analytics</h3>
+              <p>Conversion tracking, performance audits, and actionable dashboards.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. PORTFOLIO SECTION -->
+    <section class="portfolio dark-section" id="portfolio">
+      <div class="container">
+        <div class="section-title text-left" data-aos="fade-up">
+          <span class="eyebrow">FEATURED CASE STUDIES</span>
+          <h2>Portfolio with <span class="highlight">Neon</span> Precision</h2>
+          <p>Swipe through client-ready builds—from e-commerce to healthcare and CRM platforms.</p>
+        </div>
+
+        <div class="swiper portfolioSwiper" data-aos="fade-up" data-aos-delay="100">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="portfolio-card">
+                <img src="l.png" alt="E-Commerce" onerror="this.src='https://via.placeholder.com/600x300/020b06/10b981?text=E-Commerce'" />
+                <div class="portfolio-content">
+                  <span class="badge-green">Commerce</span>
+                  <h3>E-Commerce Platform</h3>
+                  <p>Conversion-focused storefront + lightning checkout performance.</p>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="portfolio-card">
+                <img src="r.png" alt="Healthcare" onerror="this.src='https://via.placeholder.com/600x300/020b06/10b981?text=Healthcare'" />
+                <div class="portfolio-content">
+                  <span class="badge-green">HealthTech</span>
+                  <h3>Healthcare App</h3>
+                  <p>Secure patient flows with appointment scheduling and analytics.</p>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="portfolio-card">
+                <img src="s.png" alt="CRM" onerror="this.src='https://via.placeholder.com/600x300/020b06/10b981?text=CRM+Software'" />
+                <div class="portfolio-content">
+                  <span class="badge-green">B2B SaaS</span>
+                  <h3>CRM Software</h3>
+                  <p>Sales pipeline automation and reporting designed for teams.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-pagination mt-4"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. TECHNOLOGIES SECTION -->
+    <section class="tech light-section" id="technologies">
+      <div class="container text-center">
+        <div class="section-title" data-aos="fade-up">
+          <span class="eyebrow">TECHNOLOGIES</span>
+          <h2><span class="highlight-green">Modern Stack</span> for Modern Outcomes</h2>
+          <p>Built using performance-first tooling and clean, scalable front-end patterns.</p>
+        </div>
+        <div class="tech-tags justify-center">
+          <span class="glass-tag" data-aos="zoom-in" data-aos-delay="50"><i class="fa-brands fa-html5"></i> HTML5</span>
+          <span class="glass-tag" data-aos="zoom-in" data-aos-delay="100"><i class="fa-brands fa-css3-alt"></i> CSS3</span>
+          <span class="glass-tag" data-aos="zoom-in" data-aos-delay="150"><i class="fa-brands fa-js"></i> JavaScript</span>
+          <span class="glass-tag" data-aos="zoom-in" data-aos-delay="200"><i class="fa-brands fa-php"></i> PHP</span>
+          <span class="glass-tag" data-aos="zoom-in" data-aos-delay="250"><i class="fa-solid fa-database"></i> XAMPP</span>
+          <span class="glass-tag" data-aos="zoom-in" data-aos-delay="300"><i class="fa-brands fa-laravel"></i> Laravel</span>
+          <span class="glass-tag" data-aos="zoom-in" data-aos-delay="350"><i class="fa-solid fa-pen-nib"></i> GSAP</span>
+          <span class="glass-tag" data-aos="zoom-in" data-aos-delay="400"><i class="fa-solid fa-a"></i> AOS</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. CONTACT FORM SECTION -->
+    <section class="contact dark-section" id="contact">
+      <div class="container contact-container">
+        <div class="contact-info" data-aos="fade-right">
+          <h2>Let's Build Your Success Story Together</h2>
+          <p style="color: var(--text-muted); font-size: 16px;">Tell us what you're building—we'll respond with a tailored plan, timeline, and next steps.</p>
+          <ul class="contact-list">
+            <li><i class="fa-solid fa-phone"></i> 9608783010</li>
+            <li><i class="fa-solid fa-envelope"></i> vatsit01@gmail.com</li>
+            <li><i class="fa-solid fa-location-dot"></i> India</li>
+          </ul>
+        </div>
+        <div class="contact-form-wrapper glass-form" data-aos="fade-left">
+          <form id="generalContactForm">
+            <div class="input-group"><input type="text" placeholder="Full Name" required></div>
+            <div class="input-group"><input type="email" placeholder="Email" required></div>
+            <div class="input-group"><input type="tel" placeholder="Phone" required></div>
+            <div class="input-group">
+              <select required>
+                <option value="" disabled selected>Interested In: Select Service</option>
+                <option>Web Development</option>
+                <option>Mobile App Development</option>
+                <option>UI/UX Design</option>
+                <option>Digital Marketing</option>
+              </select>
+            </div>
+            <div class="input-group"><textarea placeholder="Project Details" rows="3" required></textarea></div>
+            <button type="submit" class="btn btn-submit glow-effect btn-primary">Send Enquiry <i class="fa-solid fa-paper-plane"></i></button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. LIVE REVIEWS SLIDER & FORM -->
+    <section class="reviews light-section" id="reviews">
+      <div class="container">
+        <div class="section-title text-center" data-aos="fade-up">
+          <span class="eyebrow">CLIENT FEEDBACK</span>
+          <h2>Live <span class="highlight-green">Testimonials</span></h2>
+          <p>See what our clients say, and add your own feedback instantly!</p>
+        </div>
+
+        <!-- Slider -->
+        <div class="swiper reviewSwiper" data-aos="fade-up" data-aos-delay="100">
+          <div class="swiper-wrapper" id="review-wrapper">
+            <div class="swiper-slide">
+              <div class="testimonial-slide">
+                <div class="star-display">
+                  <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p>"VATSIT turned our idea into a premium product. The performance improvements were immediate."</p>
+                <h4>- DocuFirst</h4>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="testimonial-slide">
+                <div class="star-display">
+                  <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p>"The UX and design system elevated our onboarding. We saw better engagement within weeks."</p>
+                <h4>- Travelyaari</h4>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="testimonial-slide">
+                <div class="star-display">
+                  <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p>"Fast, organized, and detail-obsessed. Their delivery process made scaling effortless."</p>
+                <h4>- Maxico</h4>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-pagination mt-4"></div>
+        </div>
+
+        <!-- Submit Review Form -->
+        <div class="review-wrapper" data-aos="fade-up" data-aos-delay="200">
+          <div class="glass-form" style="background: #fff; border: 1px solid #cbd5e1; max-width: 600px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+            <h3 class="text-center" style="margin-bottom: 20px; color:#020b06; font-weight:700;">Rate Our Services</h3>
+            <form id="liveReviewForm">
+              <div class="rating-input" id="star-selector">
+                <i class="fa-solid fa-star active" data-val="1"></i>
+                <i class="fa-solid fa-star active" data-val="2"></i>
+                <i class="fa-solid fa-star active" data-val="3"></i>
+                <i class="fa-solid fa-star active" data-val="4"></i>
+                <i class="fa-solid fa-star active" data-val="5"></i>
+              </div>
+              <input type="hidden" id="ratingValue" value="5">
+
+              <div class="input-group">
+                <input type="text" id="reviewerName" placeholder="Your Name" style="background:#f8fafc; border:1px solid #cbd5e1; color:#111;" required>
+              </div>
+              <div class="input-group">
+                <input type="email" id="reviewerEmail" placeholder="Real Email Address (Required)" style="background:#f8fafc; border:1px solid #cbd5e1; color:#111;" required>
+              </div>
+              <div class="input-group">
+                <textarea id="reviewerText" placeholder="Write your feedback..." rows="3" style="background:#f8fafc; border:1px solid #cbd5e1; color:#111;" required></textarea>
+              </div>
+              
+              <button type="submit" id="submitReviewBtn" class="btn btn-primary glow-effect w-100" style="width: 100%;">Post Review Instantly</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. FOOTER -->
+    <footer class="footer dark-section" style="padding: 70px 0 30px; border-top: 1px solid rgba(16, 185, 129, 0.2);">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <img src="l.png" alt="VATSIT Logo" class="footer-logo" onerror="this.src='https://via.placeholder.com/120x45/10b981/000?text=VATSIT'" />
+          <p>Premium futuristic IT solutions—web, cloud, design systems, and growth analytics.</p>
+        </div>
+        
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#solutions">Solutions</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#technologies">Technologies</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul class="footer-links">
+            <li><a href="#services">Web Development</a></li>
+            <li><a href="#services">Mobile Apps</a></li>
+            <li><a href="#services">Cloud & DevOps</a></li>
+            <li><a href="#services">Digital Marketing</a></li>
+            <li><a href="#services">UI/UX Design</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col footer-contact">
+          <h4>Contact</h4>
+          <div class="footer-contact-line"><i class="fa-solid fa-phone"></i> <span>9608783010</span></div>
+          <div class="footer-contact-line"><i class="fa-solid fa-envelope"></i> <span>vatsit01@gmail.com</span></div>
+          <div class="footer-contact-line"><i class="fa-solid fa-globe"></i> <span>https://vishalvats.in</span></div>
+          <div class="footer-contact-line"><i class="fa-solid fa-location-dot"></i> <span>India</span></div>
+
+          <h4 style="margin-top:25px;">Newsletter</h4>
+          <div class="newsletter-box">
+            <input type="email" placeholder="Email address" required>
+            <button type="button">Subscribe</button>
+          </div>
+          
+          <div class="social-links">
+            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#"><i class="fa-brands fa-github"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <div>© 2026 VATSIT. All Rights Reserved.</div>
+        <div>Built with performance-first UX, accessible components, and premium motion.</div>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- JS Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+  
+  <!-- ========================================== -->
+  <!-- JAVASCRIPT (Interactive 3D Animation & Logic)-->
+  <!-- ========================================== -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      
+      // 1. Initialize AOS
+      AOS.init({ once: true, offset: 50, duration: 800 });
+
+      // 2. Typing Effect
+      if(document.querySelector('.typed-text')) {
+        new Typed('.typed-text', {
+          strings: ['THAT DRIVE REAL GROWTH.', 'FOR WEB & MOBILE.', 'BUILT TO SCALE.'],
+          typeSpeed: 50, backSpeed: 30, loop: true
+        });
+      }
+
+      // 3. Interactive 3D Parallax on Hero Section
+      const interactiveEl = document.getElementById('interactive3D');
+      document.addEventListener('mousemove', (e) => {
+        if(interactiveEl) {
+            let xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+            let yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+            interactiveEl.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+        }
+      });
+
+      // 4. Navbar & Mobile Menu Control
+      const navbar = document.getElementById("navbar");
+      const menuBtn = document.getElementById('mobile-menu');
+      const navLinks = document.getElementById('nav-links');
+      const sections = document.querySelectorAll("section");
+      const navItems = document.querySelectorAll(".nav-links a");
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) navbar.classList.add("scrolled");
+        else navbar.classList.remove("scrolled");
+
+        let current = "";
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop;
+          if (pageYOffset >= sectionTop - 150) {
+            current = section.getAttribute("id");
+          }
+        });
+        navItems.forEach((li) => {
+          li.classList.remove("active");
+          if (li.getAttribute("href").includes(current)) {
+            li.classList.add("active");
+          }
+        });
+      });
+
+      menuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
+      navItems.forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
+
+      // 5. Swipers Init
+      new Swiper('.portfolioSwiper', {
+        slidesPerView: 1, spaceBetween: 30, loop: true, autoplay: { delay: 3000 }, pagination: { el: '.swiper-pagination', clickable: true }, breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
+      });
+
+      const reviewSwiper = new Swiper('.reviewSwiper', {
+        slidesPerView: 1, spaceBetween: 30, loop: false, autoplay: { delay: 3500 }, pagination: { el: '.swiper-pagination', clickable: true }, breakpoints: { 768: { slidesPerView: 2 } }
+      });
+
+      // 6. Star Rating Logic
+      const starIcons = document.querySelectorAll('#star-selector i');
+      const ratingInput = document.getElementById('ratingValue');
+
+      starIcons.forEach(star => {
+        star.addEventListener('click', function() {
+          const val = this.getAttribute('data-val');
+          ratingInput.value = val;
+          starIcons.forEach(s => s.classList.remove('active'));
+          for(let i=0; i<val; i++) {
+            starIcons[i].classList.add('active');
+          }
+        });
+      });
+
+      // 7. Form Submission & Real-time Live Review
+      const reviewForm = document.getElementById('liveReviewForm');
+      const validateEmail = (email) => {
+        return String(email).toLowerCase().match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+      };
+
+      reviewForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const btn = document.getElementById('submitReviewBtn');
+        const name = document.getElementById('reviewerName').value;
+        const email = document.getElementById('reviewerEmail').value;
+        const text = document.getElementById('reviewerText').value;
+        const rating = ratingInput.value;
+
+        if (!validateEmail(email)) {
+          alert("Please enter a valid existing email address format.");
+          return;
+        }
+
+        const originalBtnText = btn.innerHTML;
+        btn.innerHTML = 'Verifying Email Existence... <i class="fa-solid fa-spinner fa-spin"></i>';
+        btn.style.opacity = '0.8';
+
+        setTimeout(() => {
+          let starsHtml = '';
+          for(let i=0; i<rating; i++) starsHtml += '<i class="fa-solid fa-star"></i>';
+
+          const newSlide = `
+            <div class="swiper-slide">
+              <div class="testimonial-slide" style="background:#fff; border:1px solid #cbd5e1;">
+                <div class="star-display">${starsHtml}</div>
+                <p style="color:#475569;">"${text}"</p>
+                <h4>- ${name}</h4>
+              </div>
+            </div>
+          `;
+
+          reviewSwiper.appendSlide(newSlide);
+          reviewSwiper.update();
+          reviewSwiper.slideTo(reviewSwiper.slides.length - 1);
+
+          btn.innerHTML = 'Review Posted Successfully! <i class="fa-solid fa-circle-check"></i>';
+          btn.style.background = '#10b981'; 
+          btn.style.color = '#000';
+          
+          reviewForm.reset();
+          starIcons.forEach(s => s.classList.add('active'));
+          ratingInput.value = 5;
+
+          setTimeout(() => {
+            btn.innerHTML = originalBtnText;
+            btn.style.background = 'var(--primary)';
+            btn.style.opacity = '1';
+          }, 3000);
+
+        }, 2000); 
+      });
+
+      // 8. General Contact form visual feedback
+      document.getElementById('generalContactForm').addEventListener('submit', function(e){
+        e.preventDefault();
+        const btn = this.querySelector('button');
+        const ot = btn.innerHTML;
+        btn.innerHTML = 'Sending... <i class="fa-solid fa-spinner fa-spin"></i>';
+        setTimeout(()=>{
+          btn.innerHTML = 'Sent! <i class="fa-solid fa-check"></i>';
+          btn.style.background = '#10b981';
+          btn.style.color = '#000';
+          this.reset();
+          setTimeout(()=> { btn.innerHTML = ot; btn.style.background = 'var(--primary)'; }, 3000);
+        }, 1500);
+      });
+
+    });
+  </script>
+</body>
+</html>
